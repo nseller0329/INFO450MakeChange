@@ -3,14 +3,15 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include <iomanip> 
 using namespace std;
 
 int main()
 {
-	float ItemCost;
-	float PaymentAmount;
-	float AddFunds;
-	float ChangeDue;
+	double ItemCost;
+	double PaymentAmount;
+	double AddFunds;
+	double ChangeDue;
 	int DollarChange;
 	int QuarterChange;
 	int DimeChange;
@@ -34,7 +35,7 @@ int main()
 			PaymentAmount = PaymentAmount + AddFunds;
 		}
 
-		cout << "You are paying " << PaymentAmount << endl;
+		std::cout << std::fixed<<std::setprecision(2) << "You are paying $ " << PaymentAmount << endl;
 
 		if (PaymentAmount == ItemCost)
 			cout << "No Change Due" << endl;
@@ -42,14 +43,14 @@ int main()
 		else if (PaymentAmount > ItemCost)
 		{
 			ChangeDue = PaymentAmount - ItemCost;
-			cout << "Your change is " << ChangeDue << endl;
+			std::cout << std::fixed << std::setprecision(2) << "Your change is $ " << ChangeDue << endl;
 			DollarChange = ChangeDue / 1.00;
 			int RemainChangeDue = (ChangeDue - DollarChange) * 100;
 			QuarterChange = RemainChangeDue / 25;
 			DimeChange = (RemainChangeDue %= 25) / 10;
 			NickelChange = (RemainChangeDue %= 10) / 5;
 
-			cout << "That is equal to " << endl;
+			cout << "That is equal to: " << endl;
 			cout << DollarChange << " Dollars" << endl;
 			cout << QuarterChange << " Quarters" << endl;
 			cout << DimeChange << " Dimes" << endl;
